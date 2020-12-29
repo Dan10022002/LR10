@@ -7,6 +7,8 @@ namespace fs = std::filesystem;
 int main(int argc, char* argv[])
 {
 	std::string action;
+	std::cout << "Enter your command: ";
+	std::getline(std::cin, action);
 
 	//1
 
@@ -17,7 +19,7 @@ int main(int argc, char* argv[])
 
 	//2
 
-	if (action == "Show_files_of_current_path")
+	else if (action == "Show_files_of_current_path")
 	{
 		for (auto& p : fs::directory_iterator(fs::current_path()))
 		{
@@ -27,8 +29,13 @@ int main(int argc, char* argv[])
 
 	//3
 
-	if (action == "Create_a_new_path")
+	else if (action == "Create_a_new_path")
 	{
+		for (auto& p : fs::directory_iterator(fs::current_path()))
+		{
+			std::cout << p.path().filename() << "\n";
+		}
+		std::cout << "\n";
 		std::cout << "Enter a name of new path: ";
 		std::string S1;
 		std::getline(std::cin, S1);
@@ -45,8 +52,13 @@ int main(int argc, char* argv[])
 
 	//4
 
-	if (action == "Show_the_size_of_the_file")
+	else if (action == "Show_the_size_of_the_file")
 	{
+		for (auto& p : fs::directory_iterator(fs::current_path()))
+		{
+			std::cout << p.path().filename() << "\n";
+		}
+		std::cout << "\n";
 		std::cout << "Enter a name of the file: ";
 		std::string S2;
 		std::getline(std::cin, S2);
@@ -63,37 +75,77 @@ int main(int argc, char* argv[])
 
 	//5
 
-	if (action == "Copy_the_file")
+	else if (action == "Copy_the_file")
 	{
-		fs::copy_file(S2, "Copy.txt");
+		for (auto& p : fs::directory_iterator(fs::current_path()))
+		{
+			std::cout << p.path().filename() << "\n";
+		}
+		std::cout << "\n";
+		std::cout << "Enter a name of the file: ";
+		std::string S2;
+		std::getline(std::cin, S2);
+		if (fs::exists(S2))
+		{
+			fs::copy_file(S2, "Copy.txt");
+		}
+		else
+		{
+			std::cout << "The file with this name isn't exists.\n\n";
+		}
 	}
 
 	//6
 
-	if (action == "Delete_the_file")
+	else if (action == "Delete_the_file")
 	{
-		fs::remove(S2);
+		for (auto& p : fs::directory_iterator(fs::current_path()))
+		{
+			std::cout << p.path().filename() << "\n";
+		}
+		std::cout << "\n";
+		std::cout << "Enter a name of the file: ";
+		std::string S2;
+		std::getline(std::cin, S2);
+		if (fs::exists(S2))
+		{
+			fs::remove(S2);
+		}
+		else
+		{
+			std::cout << "The file with this name isn't exists.\n\n";
+		}
 	}
 	//7
 
-	if (action == "Delete_the_path")
+	else if (action == "Delete_the_path")
 	{
+		for (auto& p : fs::directory_iterator(fs::current_path()))
+		{
+			std::cout << p.path().filename() << "\n";
+		}
+		std::cout << "\n";
 		std::cout << "Enter a name of deleted path: ";
 		std::string S3;
 		std::getline(std::cin, S3);
 		fs::remove_all(S3);
 		std::cout << "\n\n";
 	}
-	
+
 	//8
 
-	if (action == "Move_to_relative_path")
+	else if (action == "Move_to_relative_path")
 	{
 		std::cout << "If you want to go forward enter 1, else enter 0: ";
 		bool level;
 		std::cin >> level;
 		if (level == 1)
 		{
+			for (auto& p : fs::directory_iterator(fs::current_path()))
+			{
+				std::cout << p.path().filename() << "\n";
+			}
+			std::cout << "\n";
 			std::cout << "Enter a name of a needed path: ";
 			std::string S4;
 			std::getline(std::cin, S4);
@@ -111,8 +163,13 @@ int main(int argc, char* argv[])
 	}
 
 	//9
-	if (action == "Rename_the_file")
+	else if (action == "Rename_the_file")
 	{
+		for (auto& p : fs::directory_iterator(fs::current_path()))
+		{
+			std::cout << p.path().filename() << "\n";
+		}
+		std::cout << "\n";
 		std::cout << "Enter a name of a needed file: ";
 		std::string S5;
 		std::getline(std::cin, S5);
@@ -130,8 +187,13 @@ int main(int argc, char* argv[])
 		}
 	}
 
-	if (action == "Rename_the_path")
+	else if (action == "Rename_the_path")
 	{
+		for (auto& p : fs::directory_iterator(fs::current_path()))
+		{
+			std::cout << p.path().filename() << "\n";
+		}
+		std::cout << "\n";
 		std::cout << "Enter a name of a needed path: ";
 		std::string S7;
 		std::getline(std::cin, S7);
@@ -151,8 +213,13 @@ int main(int argc, char* argv[])
 
 	//10
 
-	if (action == "Move_the_file")
+	else if (action == "Move_the_file")
 	{
+		for (auto& p : fs::directory_iterator(fs::current_path()))
+		{
+			std::cout << p.path().filename() << "\n";
+		}
+		std::cout << "\n";
 		std::cout << "Enter a name of a needed file: ";
 		std::string S9;
 		std::getline(std::cin, S9);
