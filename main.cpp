@@ -225,17 +225,17 @@ int main(int argc, char* argv[])
 		std::getline(std::cin, S9);
 		if (fs::exists(S9))
 		{
-			std::cout << "Enter a new name of a needed path: ";
+			std::cout << "Enter a new name of a needed path way: ";
 			std::string S10;
 			std::getline(std::cin, S10);
-			fs::path current_path;
+			fs::path old_path;
 			fs::path new_path;
-			current_path = fs::current_path();
-			current_path /= S9;
+			old_path = fs::current_path();
+			old_path /= S9;
 			fs::current_path(S10);
 			new_path = fs::current_path();
-			new_path /= S10;
-			fs::rename(current_path, new_path);
+			new_path /= S9;
+			fs::rename(old_path, new_path);
 			std::cout << "Done.\n\n";
 		}
 		else
